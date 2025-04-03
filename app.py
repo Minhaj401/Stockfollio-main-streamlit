@@ -15,19 +15,11 @@ user_input = st.text_input(
 
 if user_input:  # Only fetch data if user has entered ticker
     try:
-        # Show data fetch details
-        st.sidebar.subheader("Data Fetch Details")
-        st.sidebar.write(f"Requesting data for: {user_input}")
-        st.sidebar.write(f"Start date: {start}")
-        st.sidebar.write(f"End date: {end}")
+        
         
         # Get data from yfinance
         df = yf.download(user_input, start=start, end=end)
         
-        # Show response details
-        st.sidebar.subheader("Data Details")
-        st.sidebar.write("Data Shape:", df.shape)
-        st.sidebar.write("Latest Data Point:", df.head(1))
         
     except Exception as e:
         st.error(f"Error fetching data: {e}")
